@@ -11,7 +11,7 @@ Demo link: https://youtu.be/XssjScvWYmc
 - Azure Subscription
 - Finish [Quickstart: Create a C# function in Azure using Visual Studio Code](https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-vs-code-csharp)
 
-### 1.1 Downlaod function app settings
+### Downlaod function app settings
 
 > Reference Tutorial: [Connect Azure Functions to Azure Storage using Visual Studio Code](https://learn.microsoft.com/en-us/azure/azure-functions/functions-add-output-binding-storage-queue-vs-code?pivots=programming-language-python&tabs=isolated-process#download-the-function-app-settings)
 
@@ -25,15 +25,18 @@ Demo link: https://youtu.be/XssjScvWYmc
 > [!Note]  
 > `Dependencies` refers to the library that python project required. Please make sure all extensions and runtime is configured properly.
 
+### Test the function locally
+
 6. Press `F5` to start the function.
 7. Go to Side Panel > Azure > Workspace > Local Project > Functions. Right click on `HttpExample` and choose 'Execute Function Now'. Then Press `Enter` when it requests the message body.
 8. Once the function triggered, you will see the message indicating function executed, with response saying `Hello Azure ...` : ![Trigger function locally](images/part1-trigger-function-locally.png)
 
 9. Open Azure Storage Explorer, and sign in with Azure account by following the prompt.
-10. Goto your subscription > Storage accounts > your storage account (which created in previous tutorial) > Queues > outqueue, you should see following: ![Trigger function locally](images/part1-q-first-run.png).
+10. Goto your subscription > Storage accounts > your storage account (which created in previous tutorial) > Queues > outqueue, you should see following: ![Trigger function locally](images/part1-q-first-run.png)
 
-11. Try to run the function again, and refresh the tab. Now there should be two messages: ![Trigger function locally](images/part1-trigger-second-locally.png).
+11. Try to run the function again, and refresh the tab. Now there should be two messages: ![Trigger function locally](images/part1-trigger-second-locally.png)
 
+### Deploy the app and trigger it from cloud
 12. Deploy the app
 
 > [!Note]  
@@ -44,3 +47,17 @@ Press `F1`, choose `Azure functions: create funtion app...`, then follow the pro
 13. Trigger the function by pressing `F1` > `Azure functions: Execute functions now` > Then follow the prompt to locate the newly deployed function.
 
 14. Check Storage Explorer, a new message should be added.
+
+
+
+## 2. Connect Azure Functions to Azure SQL Database using Visual Studio Code
+
+
+### Prequest
+
+
+
+
+
+> [!Important]  
+> Please do not forget to clean up all the resources created during the tutorial.
