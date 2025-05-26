@@ -55,7 +55,59 @@ Press `F1`, choose `Azure functions: create funtion app...`, then follow the pro
 
 ### Prequest
 
+- Finish Part 1
+    - Code
+    - Deployed function app
 
+### Create Azure SQL Database
+
+1. In the previous part resource group, go to create > azuer sql, locate "SQL Databases", choose Single database, then create.
+2. Database name enter `mySampleDatabase`, serer name can be any unique name, authentication method selecte `SQL Server authentication`, user name should be set to `azureuser`. 
+3. In `Networking` Tab, `Allow Azure services and resources to access this server` should be toggled as yes. Note this option is not displayed by default, you need to change the database access to `public` to see this option.
+4. Click Create.
+
+### Configure Azure SQL Database
+
+5. first go to the database you created, in side panel > Settings > Connection Strings, locate the `ADO .NET` connection string(Which is the one at bottom), copy the string, and leave it in a temporary file. Make sure you modify the password to your own.
+For example, the connection string is 
+```
+Server=tcp:cst8917lab1.database.windows.net,1433;Initial Catalog=mySampleDatabase;Persist Security Info=False;User ID=azureuser;Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+```
+and you have a password `abcd123456DEF`, 
+make sure you replace `Password={your_password}` into `Password=abcd123456DEF`.
+
+6. Then goto side panel > Query Editor(Preview), login with your password. If you did not configure the allowed ip address in last step, there will be a prompt allow you to configure it by one-click.
+
+7. Once logged in, Create a table
+```sql
+CREATE TABLE dbo.ToDo (
+    [Id] UNIQUEIDENTIFIER PRIMARY KEY,
+    [order] INT NULL,
+    [title] NVARCHAR(200) NOT NULL,
+    [url] NVARCHAR(200) NOT NULL,
+    [completed] BIT NOT NULL
+);
+```
+by paste the query above and hit `Run` button.
+
+### Update Function app
+
+8. Press `F1`, find `Azure Functions: Add New Setting`, then choose the function app we created in Part 1, enter the name `SqlConnectionString`, and the value we get in step 5.
+
+9. Press `F1`, find `Azure Functions: Download Remote Settings`, allow overwrite the existing local settings. You will find a new field `SqlConnectionString` added in `local.settings.json`.
+
+### Run the update code
+
+10. You can run the code loacted in `/part2` by pressing `F5` like we did in part 1. When we run it locally, just remain the body value by default.
+11. Once the function is executed successfully, you can go to Azure Sql Database > Query editor(Preview), right click on the `dbo.ToDo` table and select Top 1000 Rows. For now, you will see only one row.
+
+### Deploy the code
+
+12. Press `F1`, find `Azure Functions: Deploy to function app...`, choose the function app we have. (Note: if you do not want to overwrite the previous trigger, you can paste the old one into `function_app.py`)
+
+13. After deploy, you can press `F1`, and find `Azure Functions: Execute Function Now...`.
+
+14. Now, if you go back to Query editor, and select Top 1000 Rows again, you will see two rows.
 
 
 
