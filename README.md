@@ -1,5 +1,7 @@
 # cst8917-lab1
 
+Demo link: https://youtu.be/XssjScvWYmc
+
 ## 1. Connect Azure Functions to Azure Storage using Visual Studio Code
 
 ### Prequest
