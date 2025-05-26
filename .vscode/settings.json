@@ -1,7 +1,10 @@
 {
-    "azureFunctions.deploySubpath": "c_sharp_function_app/bin/Release/net9.0/publish",
-    "azureFunctions.projectLanguage": "C#",
+    "azureFunctions.deploySubpath": "part1",
+    "azureFunctions.projectLanguage": "Python",
     "azureFunctions.projectRuntime": "~4",
     "debug.internalConsoleOptions": "neverOpen",
-    "azureFunctions.preDeployTask": "publish (functions)"
+    "azureFunctions.preDeployTask": "publish (functions)",
+    "azureFunctions.scmDoBuildDuringDeployment": true,
+    "azureFunctions.pythonVenv": ".venv",
+    "azureFunctions.projectLanguageModel": 2
 }
